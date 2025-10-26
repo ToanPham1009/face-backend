@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Nhận diện Khuôn mặt</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script type="module" src="script.js"></script>
+    <!-- MediaPipe Face Detection -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection/face_detection.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hệ thống Nhận diện Khuôn mặt</h1>
+
+        <div class="controls">
+            <button id="startCamera" class="btn">Bật Camera</button>
+            <button id="startSession" class="btn" disabled>Bắt đầu Session</button>
+            <button id="endSession" class="btn" disabled>Kết thúc Session</button>
+            <button id="stopCamera" class="btn" disabled>Tắt Camera</button>
+            <!-- <button id="downloadVideo" class="btn" disabled>Tải Video</button> -->
+        </div>
+
+        <div class="video-container">
+            <video id="webcam" width="640" height="480" autoplay playsinline></video>
+            <canvas id="canvas" width="640" height="480"></canvas>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span>Khuôn mặt hiện tại: </span>
+                <span id="currentFaces">0</span>
+            </div>
+            <div class="stat-item">
+                <span>Tổng khuôn mặt: </span>
+                <span id="totalFaces">0</span>
+            </div>
+            <div class="stat-item">
+                <span>Thời gian session: </span>
+                <span id="sessionTime">00:00</span>
+            </div>
+            <div class="stat-item">
+                <span>Dung lượng video: </span>
+                <span id="videoSize">0 MB</span>
+            </div>
+        </div>
+
+        <div class="session-info">
+            <h3>Thông tin Session</h3>
+            
+            <div id="sessionData"></div>
+        </div>
+
+        <!-- Thêm container cho video recording -->
+        <div class="recording-container" style="display: none;">
+            <h3>Video đã ghi</h3>
+            <video id="recordedVideo" controls width="640" height="480"></video>
+            <div class="recording-status">
+                <span id="recordingStatus">Đang ghi: </span>
+                <span id="recordingTime">00:00</span>
+            </div>
+        </div>
+
+        
+
+        
+
+        <!-- Video Gallery Section -->
+        <div class="video-gallery" style="margin-top: 20px; display: none;">
+            <h3>📹 Video Đã Ghi</h3>
+            <div class="video-list" id="videoList"
+                style="max-height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+                <!-- Video list will be populated here -->
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
